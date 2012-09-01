@@ -24,4 +24,23 @@ difference() {
     translate([7.5+26,10.5+26,-5]) stepper_hole(h=10);
 }
 
+// end plate, faces output of extruder
+rotate(90, [1,0,0]) mirror([0,0,1]) {
+    linear_extrude(height=5) {
+        polygon([ [0,0], [0,5], [38,28], [43.5,28], [80,28],
+                  [89.5,20], [89.5,0], [0,0] ]);
+        translate([81,19.5]) circle(8.5);
+    }
+}
+
+// main structural body of extruder
+translate([40.5,0,0]) {
+    linear_extrude(height=28) {
+        polygon([[0,0], [0,5], [-3,5], [0,8],
+                 [0,5], [0,25], [8,33], [8,43],
+                 [23,43], [23,0], [0,0]]);
+        translate([9,24]) circle(9);
+    }
+}
+
 # import("../Print-Huxley/Individual-STLs/M6-Block.stl");
