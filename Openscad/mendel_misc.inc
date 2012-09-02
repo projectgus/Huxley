@@ -88,6 +88,10 @@ module m8_hole_vert(l) {
 }
 
 // For nut cavities, "height" is the max distance between two points on the hex.
+module m3_nut_cavity(l) {
+	hexagon(height=6,depth=l);
+}
+
 module m4_nut_cavity(l) {
 	hexagon(height=7.5,depth=l);
 }

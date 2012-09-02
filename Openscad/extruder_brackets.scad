@@ -1,4 +1,5 @@
-include <./inc/mendel_misc.inc>;
+use <mendel_misc.inc>;
+use <configuration.scad>;
 $fs = 0.01;
 // exit hole for filament (w/ tube)
 * translate([58.4,-1,15.5]) rotate(90, [1,0,0]) cylinder(r=3,h=5);
@@ -27,13 +28,26 @@ module baseplate() {
 
 // end plate, faces output of extruder
 module endplate() {
-    rotate(90, [1,0,0]) mirror([0,0,1]) {
-        linear_extrude(height=5) {
-            polygon([ [0,0], [0,5], [38,28],
-                      [43.5,28], [80,28],
-                      [89.5,20], [89.5,0],
-                      [0,0] ]);
-            translate([81,19.5]) circle(8.5);
+    difference() {
+        rotate(90, [1,0,0]) mirror([0,0,1]) {
+            linear_extrude(height=5) {
+                polygon([ [0,0], [0,5], [38,28],
+                          [43.5,28], [80,28],
+                          [89.5,20], [89.5,0],
+                          [0,0] ]);
+                translate([81,19.5]) circle(8.5);
+            }
+        }
+        // mounting holes
+        rotate(90, [1,0,0]) mirror([0,0,1]) {
+            for(x = [ -25, 25 ]) {
+                translate([59+x,15,-10])
+                    cylinder(r=1.7,h=100);
+            }
+        }
+        // recess against pivot mount
+        translate([71,27,2]) {
+            cylinder(h=100,r=23);
         }
     }
 }
@@ -59,6 +73,22 @@ module pivotmount() {
             }
             translate([4.75,3.6,-1]) {
                 cylinder(h=100, r=1.65);
+            }
+        }
+    }
+}
+
+// two bolt holes for the pivot tensioner
+module pivotbolt() {
+    cylinder(r=2.2,h=100);
+    rotate(90, [0,0,1]) m3_nut_cavity(5);
+}
+
+module pivotboltholes() {
+    rotate(90, [0,1,0]) {
+        for(x = [ -8, -23 ]) {
+            translate([x,36.6,51]) {
+                pivotbolt();
             }
         }
     }
@@ -102,7 +132,7 @@ module filament() {
     }
 }
 
-difference() {
+! difference() {
     union() {
         baseplate();
         endplate();
@@ -111,6 +141,7 @@ difference() {
     }
     driveshaft();
     filament();
+    pivotboltholes();
 }
 
-// # import("../Print-Huxley/Individual-STLs/M6-Block.stl");
+//import("../Print-Huxley/Individual-STLs/M6-Block.stl");
