@@ -132,16 +132,23 @@ module filament() {
     }
 }
 
-! difference() {
-    union() {
-        baseplate();
-        endplate();
-        mainbody();
-        pivotmount();
+module m6_block() {
+    difference() {
+        union() {
+            baseplate();
+            endplate();
+            mainbody();
+            pivotmount();
+        }
+        driveshaft();
+        filament();
+        pivotboltholes();
     }
-    driveshaft();
-    filament();
-    pivotboltholes();
 }
 
-//import("../Print-Huxley/Individual-STLs/M6-Block.stl");
+m6_block();
+
+/*
+translate([0,60,0])
+    import("../Print-Huxley/Individual-STLs/M6-Block.stl");
+*/
