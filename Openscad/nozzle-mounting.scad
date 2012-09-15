@@ -7,7 +7,7 @@ module solid_section() {
                 cube([40,25.8,5]);
                 cube([40,7,11.2]);
                 translate([13.5,0,0])
-                    cube([13,25,11.2]);
+                    cube([13,25.8,12.2]);
             }
     }
 }
@@ -15,10 +15,6 @@ module solid_section() {
 // the original model has nice angled corners.
 // Emulating them the crummy way here
 module angular_edges() {
-    translate([-20,30.5,0]) {
-        rotate(27,[1,0,0])
-            cube([40,5,15]);
-    }
     // base corners
     for(m = [0,1]) {
         mirror([m,0,0]) {
@@ -67,11 +63,14 @@ module heat_sink_mounting_holes() {
     rotate(-90, [1,0,0]) {
         for(x = [-7.5,7.5]) {
             translate([x,-8,0]) {
-                cylinder(r=1.6,h=20);
+                cylinder(r=1.6,h=16);
                 translate([0,-3.2,0])
                     cube([3.2,6.4,25], center=true);
-                translate([0,0,9])
-                    cylinder(r=3.7,h=50);
+                translate([0,0,9]) {
+                    translate([0,-2.0,4])
+                        cube([7.4,5.0,8], center=true);
+                    cylinder(r=3.7,h=8);
+                }
             }
         }
     }
@@ -79,25 +78,18 @@ module heat_sink_mounting_holes() {
 
 // filament_path
 module filament_path() {
+    // captive nut properties
+    tolerance=0.5;
+    nut_height=4+tolerance;
+    nut_recess_width=8+tolerance; // flat side A/F
+    recess_offset=25;
+
     rotate(-90, [1,0,0]) {
-        translate([0,-8.15,0]) {
-            cylinder(r=2.15,h=30);
-            cylinder(r=3.3,h=16);
-            translate([0,0,16])
-                cylinder(r1=3.3,r2=2.2,h=1.2);
-            translate([0,0,25.5]) {
-                    cylinder(r1=2.2,r2=3.5,h=3.2);
-            }
-            translate([-3.3,-6.6,0]) {
-                cube([6.6,6.6,16]);
-            }
-            translate([0,-6.6,21]) {
-                cube([4,14,12], center=true);
-                for(r = [-45,45]) {
-                    rotate(r,[0,0,1]) {
-                        cube([5,10,10], center=true);
-                    }
-                }
+        translate([0,-8.2,0]) {
+            cylinder(r=1.0,h=30);
+            translate([0,0,23.8]) {
+                cylinder(r=2.75,h=6);
+                cube([nut_recess_width,recess_offset,nut_height], center=true);
             }
         }
     }
@@ -116,10 +108,4 @@ module nozzle_mounting() {
 //heat_sink_mounting_holes();
 nozzle_mounting();
 //filament_path();
-
-translate([0,-30,0])
-    import("../Print-Huxley/Individual-STLs/nozzle-mounting.stl");
-translate([42,0,0])
-    import("../Print-Huxley/Individual-STLs/nozzle-mounting.stl");
-
 
