@@ -106,6 +106,9 @@ module driveshaft() {
                 polygon([ [-4,0],
                           [10,-9.6],
                           [10, 9.5],
+                          [5,4],
+                          [0,4],
+                          [0,0],
                           [0,0] ]);
             }
         }
@@ -148,7 +151,5 @@ module m6_block() {
 
 m6_block();
 
-/*
-translate([0,60,0])
-    import("../Print-Huxley/Individual-STLs/M6-Block.stl");
-*/
+//translate([0,60,0])
+//import("../Print-Huxley/Individual-STLs/M6-Block.stl");
