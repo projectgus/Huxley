@@ -116,16 +116,25 @@ module driveshaft() {
 
 // filament path
 module filament() {
+    // captive nut properties:
+    tolerance=0.5;
+    nut_height=4+tolerance;
+    nut_recess_width=8+tolerance; // flat side A/F
+    nut_width_b=9.20+tolerance; // pointed side A/C
+    recess_offset=25;
+
     rotate(270,[1,0,0]) {
         translate([58.5,-15.5,0]) {
-            cylinder(r=1.15,h=100);
-            cylinder(r=3.3,h=5);
+            cylinder(r=1,h=100);
+            translate([0,0,-1]) cylinder(r=3,h=6); // mounting hole
             translate([0,0,8]) {
-                cylinder(r1=1.15,r2=4.2,h=12);
+                cylinder(r1=1,r2=4.2,h=12);
             }
-            // slot for holder fork
-            translate([-4,-15,5]) {
-                cube([8,25,4]);
+            // slot for M5 captive nut insert, should be just wide
+            // enough to drop an M5 in sideways, and have it line up
+            // with the mounting hole
+            translate([-nut_recess_width/2,-recess_offset+nut_width_b/2,2]) {
+                cube([nut_recess_width,recess_offset,nut_height]);
             }
 
         }
