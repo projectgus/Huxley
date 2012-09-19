@@ -82,14 +82,15 @@ module filament_path() {
     tolerance=0.5;
     nut_height=4+tolerance;
     nut_recess_width=8+tolerance; // flat side A/F
+    nut_width_b=9.20+tolerance; // pointed side A/C
     recess_offset=25;
 
     rotate(-90, [1,0,0]) {
         translate([0,-8.2,0]) {
             cylinder(r=1.0,h=30);
-            translate([0,0,23.8]) {
-                cylinder(r=2.75,h=6);
-                cube([nut_recess_width,recess_offset,nut_height], center=true);
+            // slot to drop in nut
+            translate([-nut_recess_width/2,-recess_offset+nut_width_b/2,23]) {
+                cube([nut_recess_width,recess_offset,nut_height]);
             }
         }
     }
