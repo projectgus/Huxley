@@ -89,8 +89,8 @@ module filament_path() {
         translate([0,-8.2,0]) {
             cylinder(r=1.0,h=30);
             // slot to drop in nut
-            translate([-nut_recess_width/2,-recess_offset+nut_width_b/2,23]) {
-                cube([nut_recess_width,recess_offset,nut_height]);
+            translate([-nut_width_b/2,-recess_offset+nut_recess_width/2,23]) {
+                cube([nut_width_b,recess_offset,nut_height]);
             }
         }
     }
