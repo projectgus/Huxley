@@ -7,7 +7,7 @@ module solid_section() {
                 cube([40,25.8,5]);
                 cube([40,7,11.2]);
                 translate([13.5,0,0])
-                    cube([13,25.8,12.2]);
+                    cube([13,31.8,12.2]);
             }
     }
 }
@@ -87,9 +87,13 @@ module filament_path() {
 
     rotate(-90, [1,0,0]) {
         translate([0,-8.2,0]) {
-            cylinder(r=1.0,h=30);
+            cylinder(r=1.0,h=40);
+            // end piece
+            translate([0,0,30]) {
+                cylinder(r=2.75,h=6);
+            }
             // slot to drop in nut
-            translate([-nut_width_b/2,-recess_offset+nut_recess_width/2,23]) {
+            translate([-nut_width_b/2,-recess_offset+nut_recess_width/2,29]) {
                 cube([nut_width_b,recess_offset,nut_height]);
             }
         }
