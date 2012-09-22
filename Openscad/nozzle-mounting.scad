@@ -6,8 +6,18 @@ module solid_section() {
             translate([0,3,0]) {
                 cube([40,25.8,5]);
                 cube([40,7,11.2]);
-                translate([13.5,0,0])
+                translate([13.5,0,0]) {
+                    translate([0,27,12]) {
+                        // triangular reinforcement around push-to-fit connector
+                        rotate(-90,[0,1,0]) {
+                            mirror([0,0,1]) {
+                                linear_extrude(height=13)
+                                    polygon([[0,0],[0,4.8], [4,4.8]]);
+                            }
+                        }
+                    }
                     cube([13,31.8,12.2]);
+                }
             }
     }
 }
