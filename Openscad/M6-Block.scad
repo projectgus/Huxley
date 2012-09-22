@@ -149,6 +149,3 @@ module m6_block() {
 }
 
 m6_block();
-
-//translate([0,60,0])
-//import("../Print-Huxley/Individual-STLs/M6-Block.stl");
