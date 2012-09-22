@@ -97,7 +97,7 @@ module filament_path() {
 
     rotate(-90, [1,0,0]) {
         translate([0,-8.2,0]) {
-            cylinder(r=1.0,h=40);
+            cylinder(r=1.25,h=40);
             // bottom end, 8mm deep open-faced recess for brass fitting from original extruder
             cylinder(r=2.75,h=3+8+tolerance);
             translate([-2.75,-20,0]) {
