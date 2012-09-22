@@ -64,7 +64,7 @@ module mainbody() {
     }
 }
 
-// triangular pivot mount for the pressure plate
+// triangular pivot mount for the idler plate
 module pivotmount() {
     translate([63.5,5,11.5]) {
         difference() {
@@ -72,7 +72,7 @@ module pivotmount() {
                 polygon([ [0,0], [17, 0], [0, 10]]);
             }
             translate([4.75,3.6,-1]) {
-                cylinder(h=100, r=1.65);
+                cylinder(h=100, r=1.9);
             }
         }
     }
