@@ -98,11 +98,16 @@ module filament_path() {
     rotate(-90, [1,0,0]) {
         translate([0,-8.2,0]) {
             cylinder(r=1.0,h=40);
-            // end piece
+            // bottom end, 8mm deep open-faced recess for brass fitting from original extruder
+            cylinder(r=2.75,h=3+8+tolerance);
+            translate([-2.75,-20,0]) {
+                cube([5.5,20,3+8+tolerance]);
+            }
+            // top end, push-to-fit m5 mounting hole
             translate([0,0,30]) {
                 cylinder(r=2.75,h=6);
             }
-            // slot to drop in nut
+            // top end, slot to drop in m5 nut
             translate([-nut_width_b/2,-recess_offset+nut_recess_width/2,29]) {
                 cube([nut_width_b,recess_offset,nut_height]);
             }
