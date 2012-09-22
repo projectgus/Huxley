@@ -102,12 +102,17 @@ module driveshaft() {
         translate([0,0,23])
             cylinder(h=6,r=9.7);
         translate([0,0,11.5]) {
+            // idler bearing recess
+            translate([13,0,0]) {
+                cylinder(h=20,r=9.7);
+            }
             linear_extrude(height=20) {
                 polygon([ [-4,0],
                           [10,-9.6],
                           [10, 9.5],
-                          [10,15.5],
-                          [0,15.5],
+                          [5,4],
+                          [0,4],
+                          [0,0],
                           [0,0] ]);
             }
         }
