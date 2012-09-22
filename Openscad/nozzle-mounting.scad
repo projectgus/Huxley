@@ -67,9 +67,9 @@ module heat_sink_mounting_holes() {
                 translate([0,-3.2,0])
                     cube([3.2,6.4,25], center=true);
                 translate([0,0,9]) {
-                    translate([0,-2.0,4])
-                        cube([7.4,5.0,8], center=true);
-                    cylinder(r=3.7,h=8);
+                    translate([0,-2.0,9])
+                        cube([7.4,5.0,18], center=true);
+                    cylinder(r=3.7,h=18);
                 }
             }
         }
