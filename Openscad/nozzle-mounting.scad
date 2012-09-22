@@ -113,13 +113,4 @@ module nozzle_mounting() {
     }
 }
 
-//heat_sink_mounting_holes();
 nozzle_mounting();
-//filament_path();
-
-translate([0,-30,0])
-    import("../Print-Huxley/Individual-STLs/nozzle-mounting.stl");
-translate([42,0,0])
-    import("../Print-Huxley/Individual-STLs/nozzle-mounting.stl");
-
-
