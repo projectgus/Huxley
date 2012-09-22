@@ -110,7 +110,4 @@ module nozzle_mounting() {
     }
 }
 
-//heat_sink_mounting_holes();
 nozzle_mounting();
-//filament_path();
-

@@ -102,6 +102,10 @@ module driveshaft() {
         translate([0,0,23])
             cylinder(h=6,r=9.7);
         translate([0,0,11.5]) {
+            // idler bearing recess
+            translate([13,0,0]) {
+                cylinder(h=20,r=9.7);
+            }
             linear_extrude(height=20) {
                 polygon([ [-4,0],
                           [10,-9.6],
@@ -159,6 +163,3 @@ module m6_block() {
 }
 
 m6_block();
-
-//translate([0,60,0])
-//import("../Print-Huxley/Individual-STLs/M6-Block.stl");
