@@ -42,7 +42,7 @@ module endplate() {
         rotate(90, [1,0,0]) mirror([0,0,1]) {
             for(x = [ -25, 25 ]) {
                 translate([59+x,15,-10])
-                    cylinder(r=1.7,h=100);
+                    cylinder(r=1.8,h=100);
             }
         }
         // recess against pivot mount
