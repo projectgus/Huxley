@@ -30,17 +30,6 @@ module solid_section() {
             }
         }
     }
-    // "guidance ears" at the top of the nozzle mounting, keep filament straight
-    for(mirror = [1,0])
-        mirror([mirror,0,0]) {
-            translate([5.75,31.8,0]) {
-                difference() {
-                    cylinder(r=3.8,h=12.2);
-                    translate([-1.6,0,0])
-                        cube([6,3.8,12.2]);
-                }
-            }
-        }
 }
 
 // the original model has nice angled corners.
@@ -108,6 +97,12 @@ module filament_path() {
             cylinder(r=2,h=40);
             // bottom end, min 20.5mm deep 12mm diameter recess for push-to-fit connector
             cylinder(r=6,h=3+21);
+        }
+    }
+    // recess at top of the nozzle mounting, guide the filament in
+    translate([0,29.5,8.2]) {
+        rotate(90,[-1,0,0]) {
+            cylinder(r1=2,r2=4,h=4);
         }
     }
 }
